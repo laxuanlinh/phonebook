@@ -17,24 +17,15 @@ public class PhonebookController {
 //    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/phone")
-    public Phone getPhone(@RequestParam Integer id){
+    public Phone getPhone(@RequestParam Integer id, @RequestParam Integer phonebook){
         Long start = System.nanoTime();
         Phone phone = new Phone();
-        phone = (Phone) PhonebookApplication.phonebook.get(id);
-
+        if (phonebook.equals(1))
+            phone = (Phone) PhonebookApplication.phonebook.get(id);
+        else
+            phone = (Phone) PhonebookApplication.phonebook2.get(id);
         Long end = System.nanoTime();
-        System.out.println("Time taken 1: "+(end-start));
-        return phone;
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/phone2")
-    public Phone getPhone2(@RequestParam Integer id){
-        Long start = System.nanoTime();
-        Phone phone = new Phone();
-        phone = (Phone) PhonebookApplication.phonebook2.get(id);
-
-        Long end = System.nanoTime();
-        System.out.println("Time taken 2: "+(end-start));
+        System.out.println("Time taken "+phonebook+": "+(end-start));
         return phone;
     }
 

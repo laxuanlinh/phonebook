@@ -21,11 +21,11 @@ public class PhonebookApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		phonebook = new HashMap<Integer, Phone>();
 		phonebook2 = new HashMap<Integer, Phone>();
-		for (int i = 0; i < 1000000; i++){
+		for (int i = 0; i < 1_000_000; i++){
 			Phone phone = new Phone(i, "Linh", "213123"+i);
-			phonebook.put(String.format("%08d" , i), phone);
+			phonebook.put(i, phone);
 		}
-		phonebook2.put(String.format(("%08d"), 4), new Phone(4, "Linh", "123123"));
+		phonebook2.put(4, new Phone(4, "Linh", "123123"));
 		System.out.println("Init done");
 	}
 }
